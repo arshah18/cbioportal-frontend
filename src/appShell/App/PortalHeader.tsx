@@ -4,10 +4,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { If, Then, Else } from 'react-if';
 import { AppStore } from '../../AppStore';
 import { observer } from 'mobx-react';
-import {
-    getcBioPortalLogoUrl,
-    getInstituteLogoUrl,
-} from '../../shared/api/urls';
+import { getInstituteLogoUrl } from '../../shared/api/urls';
 import SocialAuthButton from '../../shared/components/SocialAuthButton';
 import { Dropdown } from 'react-bootstrap';
 import { DataAccessTokensDropdown } from '../../shared/components/dataAccessTokens/DataAccessTokensDropdown';
@@ -122,13 +119,13 @@ export default class PortalHeader extends React.Component<
                 <div id="leftHeaderContent">
                     <Link to="/" id="cbioportal-logo">
                         <img
-                            src={
-                                !!getcBioPortalLogoUrl()
-                                    ? getcBioPortalLogoUrl()
-                                    : require('../../globalStyles/images/cbioportal_logo.png')
-                            }
+                            src={require('../../rootImages/portalLogo.png')}
                             alt="cBioPortal Logo"
                         />
+                        <span style={{ fontSize: '22px', marginLeft: '10px' }}>
+                            Iqbal Lab BioPortal: University of Nebraska Medical
+                            Center
+                        </span>
                     </Link>
                     <nav id="main-nav">
                         <ul>{this.getTabs()}</ul>
@@ -178,10 +175,10 @@ export default class PortalHeader extends React.Component<
                             </Else>
                         </If>
                     </If>
-                    <If condition={!!getInstituteLogoUrl()}>
+                    <If condition={getInstituteLogoUrl()}>
                         <img
                             id="institute-logo"
-                            src={getInstituteLogoUrl()!}
+                            src={getInstituteLogoUrl()}
                             alt="Institute Logo"
                         />
                     </If>
