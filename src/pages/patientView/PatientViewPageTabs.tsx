@@ -16,6 +16,8 @@ import ResourcesTab, {
     RESOURCES_TAB_NAME,
 } from 'pages/patientView/resources/ResourcesTab';
 import PathologyReport from 'pages/patientView/pathologyReport/PathologyReport';
+import CustomPathologyReport from 'pages/patientView/pathologyReport/CustomPathologyReport';
+import CustomTissueImage from 'pages/patientView/tissueImage/CustomTissueImage';
 import IFrameLoader from 'shared/components/iframeLoader/IFrameLoader';
 import { getDigitalSlideArchiveIFrameUrl } from 'shared/api/urls';
 import TrialMatchTable from 'pages/patientView/trialMatch/TrialMatchTable';
@@ -49,6 +51,8 @@ export enum PatientViewPageTabs {
     TrialMatchTab = 'trialMatchTab',
     MutationalSignatures = 'mutationalSignatures',
     PathwayMapper = 'pathways',
+    SummaryClinicoPathologyFeatures = 'summaryClinicoPathologyFeatures',
+    HandEandIHCs = 'H&EandIHCs',
 }
 
 export const PatientViewResourceTabPrefix = 'openResource_';
@@ -94,6 +98,7 @@ export function tabs(
     sampleManager: SampleManager | null
 ) {
     const tabs: JSX.Element[] = [];
+
     tabs.push(
         <MSKTab key={0} id={PatientViewPageTabs.Summary} linkText="Summary">
             <LoadingIndicator
@@ -630,22 +635,39 @@ export function tabs(
                         pageComponent.patientViewPageStore
                             .selectedMutationalSignatureVersion
                     }
-                    dataCount={
-                        pageComponent.patientViewPageStore
-                            .mutationalSignatureCountDataGroupedByVersion.result
-                    }
-                    sample={
-                        pageComponent.patientViewPageStore
-                            .selectedSampleMutationalSignatureData
-                    }
-                    samples={
-                        pageComponent.patientViewPageStore
-                            .samplesWithCountDataAvailable
-                    }
-                    onSampleChange={pageComponent.onSampleIdChange}
                 />
             </MSKTab>
         );
+
+    tabs.push(
+        <MSKTab
+            key={9}
+            id={PatientViewPageTabs.SummaryClinicoPathologyFeatures}
+            linkText="Summary Clinico Pathology Features"
+            hide={false}
+        >
+            <div>
+                <CustomPathologyReport
+                    iframeHeight={WindowStore.size.height - 220}
+                />
+            </div>
+        </MSKTab>
+    );
+
+    tabs.push(
+        <MSKTab
+            key={10}
+            id={PatientViewPageTabs.HandEandIHCs}
+            linkText="H & E and IHCs"
+            hide={false}
+        >
+            <div>
+                <CustomTissueImage
+                    iframeHeight={WindowStore.size.height - 220}
+                />
+            </div>
+        </MSKTab>
+    );
 
     pageComponent.resourceTabs.component &&
         /* @ts-ignore */
