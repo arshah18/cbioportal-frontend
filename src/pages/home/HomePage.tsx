@@ -11,7 +11,6 @@ import RightBar from '../../shared/components/rightbar/RightBar';
 import './homePage.scss';
 import autobind from 'autobind-decorator';
 import { createQueryStore } from 'shared/lib/createQueryStore';
-import { setTourLocalStorageFromURL } from 'tours';
 
 const win = window as any;
 
@@ -38,10 +37,6 @@ export default class HomePage extends React.Component<
         this.queryStore = createQueryStore();
     }
 
-    componentDidMount() {
-        setTourLocalStorageFromURL();
-    }
-
     private handleTabChange(id: string) {
         this.props.routing.updateRoute({ tab: id });
     }
@@ -56,7 +51,7 @@ export default class HomePage extends React.Component<
             <PageLayout
                 className="homePageLayout"
                 noMargin={true}
-                rightBar={<RightBar queryStore={this.queryStore} />}
+                // rightBar={<RightBar queryStore={this.queryStore} />}
             >
                 <div
                     className={'headBlock'}
@@ -68,7 +63,7 @@ export default class HomePage extends React.Component<
                 <QueryAndDownloadTabs
                     getQueryStore={this.getQueryStore}
                     showQuickSearchTab={getServerConfig().quick_search_enabled}
-                    showDownloadTab={false}
+                    showDownloadTab={true}
                 />
             </PageLayout>
         );
