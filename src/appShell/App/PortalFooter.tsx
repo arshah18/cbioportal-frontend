@@ -26,7 +26,8 @@ export default class PortalFooter extends React.Component<
         }
         if (
             getServerConfig().skin_footer &&
-            !_.isEmpty(getServerConfig().skin_footer)
+            !_.isEmpty(getServerConfig().skin_footer) &&
+            false
         ) {
             return (
                 <div
@@ -51,12 +52,13 @@ export default class PortalFooter extends React.Component<
                     <div className="footer-layout">
                         <div className="footer-elem">
                             <img
-                                src={require('../../globalStyles/images/cbioportal_logo.png')}
+                                src={require('../../rootImages/portalLogo.png')}
                                 style={{
-                                    width: 142,
+                                    // width: 142,
+                                    height: '50px',
                                     filter: 'grayscale(100%)',
                                 }}
-                                alt="cBioPortal Logo"
+                                alt="Iqbal Lab BioPortal: University of Nebraska Medical Center Logo"
                             />
                             {version && (
                                 <a href={`${getLoadConfig().apiRoot}api/info`}>
@@ -236,13 +238,16 @@ export default class PortalFooter extends React.Component<
                             <h3>CONTACT</h3>
                             <ul>
                                 <li>
-                                    <a
+                                    <a href={`mailto:abrshah@unmc.edu`}>
+                                        abrshah@unmc.edu
+                                    </a>
+                                    {/* <a
                                         href={`mailto:${
                                             getServerConfig().skin_email_contact
                                         }`}
                                     >
                                         {getServerConfig().skin_email_contact}
-                                    </a>
+                                    </a> */}
                                 </li>
                             </ul>
                         </div>

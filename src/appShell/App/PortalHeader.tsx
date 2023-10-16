@@ -123,7 +123,8 @@ export default class PortalHeader extends React.Component<
                             alt="cBioPortal Logo"
                         />
                         <span style={{ fontSize: '22px', marginLeft: '10px' }}>
-                        T-Cell Lymphoma Genomics and Digital Pathology Network
+                            Iqbal Lab BioPortal: University of Nebraska Medical
+                            Center
                         </span>
                     </Link>
                     <nav id="main-nav">
