@@ -58,7 +58,7 @@ export default class PortalFooter extends React.Component<
                                     height: '50px',
                                     filter: 'grayscale(100%)',
                                 }}
-                                alt="Iqbal Lab BioPortal: University of Nebraska Medical Center Logo"
+                                alt="T-Cell Lymphoma Genomics and Digital Pathology Network: TCL-GDPN Logo"
                             />
                             {version && (
                                 <a href={`${getLoadConfig().apiRoot}api/info`}>
