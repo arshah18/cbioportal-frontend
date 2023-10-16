@@ -105,8 +105,7 @@ export default class Container extends React.Component<IContainerProps, {}> {
                         <Helmet>
                             <meta charSet="utf-8" />
                             <title>
-                                Iqbal Lab BioPortal: University of Nebraska
-                                Medical Center
+                            T-Cell Lymphoma Genomics and Digital Pathology Network: TCL-GDPN
                             </title>
                             <meta
                                 name="description"
